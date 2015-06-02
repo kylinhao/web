@@ -24,20 +24,20 @@
 <div class="middle">
     <br style="" hidden/>
 
-    <form action="/index/" class="form-login" role="form">
-
+    <form  method="post" class="form-login" role="form">
+        {% csrf_token %}
         <div class="form-group  has-feedback">
             <span class="ico glyphicon glyphicon-user form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="用户名">
+            <input type="text" name="userId" class="form-control" placeholder="用户名">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="密码">
+            <input type="password" name="password" class="form-control" placeholder="密码">
         </div>
         <div class="form-group">
-            <input type="radio" name="type" checked>学 生
-            <input type="radio" style="margin-left: 8px" name="type">教 师
-            <input type="radio" style="margin-left: 8px" name="type">助 教
-            <input type="radio" style="margin-left: 8px" name="type">管理员
+            <input type="radio" name="type" value="student" checked>学 生
+            <input type="radio" style="margin-left: 8px" name="type" value="teacher">教 师
+            <input type="radio" style="margin-left: 8px" name="type" value="assistant">助 教
+            <input type="radio" style="margin-left: 8px" name="type" value="admin">管理员
         </div>
 
         <div class="form-group" style=" padding-top: 10px">

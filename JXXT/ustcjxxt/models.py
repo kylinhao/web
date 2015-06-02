@@ -11,43 +11,43 @@ sexType = (
 
 
 class Student(models.Model):
-    stuId = models.CharField(max_length=20, primary_key=True)
+    studentId = models.CharField(max_length=20, primary_key=True)
     password = models.CharField(max_length=60)
     name = models.CharField(max_length=30)
-    age = models.IntegerField()
+    age = models.IntegerField(blank=True)
     sex = models.CharField(max_length=1, choices=sexType)
-    address = models.CharField(max_length=60)
+    address = models.CharField(max_length=60,blank=True)
     email = models.EmailField()
-    headshot = models.ImageField(upload_to='stuPic/')
+    headshot = models.ImageField(upload_to='stuPic/',blank=True)
 
     class Meta:
-        ordering = ["stuId"]
+        ordering = ["studentId"]
 
     def __unicode__(self):
-        return self.stuId
+        return self.studentId
         # @models.permalink
         # def get_absolute_url(self):
-        #     return ('item_detail',None,{'object_id':self.stuId})
+        #     return ('item_detail',None,{'object_id':self.studentId})
 
 
 class Teacher(models.Model):
-    teaId = models.CharField(max_length=20, primary_key=True)
+    teacherId = models.CharField(max_length=20, primary_key=True)
     password = models.CharField(max_length=60)
     name = models.CharField(max_length=30)
-    age = models.IntegerField()
+    age = models.IntegerField(blank=True)
     sex = models.CharField(max_length=1, choices=sexType)
-    address = models.CharField(max_length=60)
+    address = models.CharField(max_length=60,blank=True)
     email = models.EmailField()
-    headshot = models.ImageField(upload_to='teaPic/')
+    headshot = models.ImageField(upload_to='stuPic/',blank=True)
 
     class Meta:
-        ordering = ["teaId"]
+        ordering = ["teacherId"]
 
     def __unicode__(self):
-        return self.teaId
+        return self.teacherId
         # @models.permalink
         # def get_absolute_url(self):
-        #     return ('item_detail',None,{'object_id':self.teaId})
+        #     return ('item_detail',None,{'object_id':self.teacherId})
 
 
 class Assistant(models.Model):

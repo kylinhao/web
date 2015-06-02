@@ -3,9 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>助教</title>
-    <link rel="stylesheet" href="/staic/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/assistant.css">
-    <script src="/staic/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/assistant.css">
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
     <script>
         $(document).ready(function () {
             $("#homework").hide();
@@ -15,9 +15,9 @@
                 var href = $(this).attr("href");
                 $(this).closest("ul").find("li").removeClass("active");
                 $(this).closest("li").addClass("active");
-                var navtitle =["#home","#homework","#problem","#content"];
-                if($.inArray(href,navtitle) != -1 ) {
-                    for(var i=0;i<navtitle.length;i++) {
+                var navtitle = ["#home", "#homework", "#problem", "#content"];
+                if ($.inArray(href, navtitle) != -1) {
+                    for (var i = 0; i < navtitle.length; i++) {
                         $(navtitle[i]).hide();
                     }
                     $(href).show();
@@ -30,8 +30,8 @@
 
 <div class="container">
     <div class="header">
-        <img class="header-left" src="/staic/Image/ustc.gif">
-        <span class="header-right">你好，<a>{{name}}</a>欢迎回来&nbsp;&nbsp;&nbsp;<a href="#">退出系统</a></span>
+        <img class="header-left" src="/static/Image/ustc.gif">
+        <span class="header-right">你好，<a>{{ username }}</a>欢迎回来&nbsp;&nbsp;&nbsp;<a href="/logout">退出系统</a></span>
     </div>
 </div>
 
@@ -53,29 +53,35 @@
             <table class="table table-bordered">
                 <tr>
                     <td>工号：</td>
-                    <td><input class="form-control input-sm" readonly  type="text" placeholder="{{astId}}"></td>
+                    <td><input class="form-control input-sm" readonly type="text" placeholder="{{ astId }}"></td>
                     <td>姓名：</td>
-                    <td><input class="form-control input-sm" readonly type="text" placeholder=" {{name}}"></td>
+                    <td><input class="form-control input-sm" readonly type="text" placeholder=" {{ name }}"></td>
                 </tr>
                 <tr>
                     <td>邮箱：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{email}}"></span</td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ email }}"></td>
 
-                    <td>手机号：</td><td><input class="form-control input-sm" type="text" placeholder="{{phoneNumber}}"></td>
+                    <td>手机号：</td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ phoneNumber }}"></td>
                 </tr>
 
                 <tr>
                     <td>开始时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{beginTime}}"></td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ beginTime }}"></td>
                     <td>结束时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{endTime}}"></td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ endTime }}"></td>
                 </tr>
             </table>
         </div>
 
         <div id="homework">
             <label><h5>学生作业</h5></label>
-            {{form.as_p}}<br>
+            <br>
+
+            <form>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
             <table class="table table-bordered ">
                 <tr>
                     <td>姓名</td>
@@ -107,7 +113,11 @@
         <div id="problem">
             <label><h5>学生问题</h5></label>
             <br>
-            {{form.as_p}}
+
+            <form>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
             <table class="table table-bordered ">
                 <tr>
                     <td>问题</td>
@@ -131,23 +141,26 @@
         <div id="content">
             <label><h5>问题内容</h5></label>
             <br>
-            {{form.as_p}}
+            <form>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
             <div class="">
                 <span class="title-position"><h5>问题概述:</h5></span>
-                <input type="text" class="form-control" placeholder="{{title}}">
+                <input type="text" class="form-control" placeholder="{{ title }}">
                 <br><br>
                 <span class=""><h5>问题详情:</h5></span>
-                <textarea class="form-control" rows="5" readonly placeholder="{{content}}"></textarea>
+                <textarea class="form-control" rows="5" readonly placeholder="{{ content }}"></textarea>
             </div>
             <div style="margin-top: 10px;">
                 <h5 class="">回答者A：</h5>
-                <span class="">{{看法1}}</span>
+                <span>{{ opinionA }}</span>
                 <h5>回答者B：</h5>
-                <span class="">{{看法2}}</span>
+                <span>{{ opinionB }}</span>
             </div>
             <div>
                 <span class=""><h5>回答问题:</h5></span>
-                <textarea class="form-control" rows="5" placeholder="{{content}}"></textarea>
+                <textarea class="form-control" rows="5" placeholder="{{ content }}"></textarea>
                 <a class="btn btn-default" style="margin-top: 6px" href="#">回答问题</a>
             </div>
         </div>
