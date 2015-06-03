@@ -75,10 +75,17 @@ WSGI_APPLICATION = 'JXXT.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# 'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jxxt',
+#         'USER':'root',
+#         'PASSWORD': 'haolin',
+#         'HOST': '',
+#         'PORT': '',
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jxxt',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'jxxt.db',
         'USER':'root',
         'PASSWORD': 'haolin',
         'HOST': '',

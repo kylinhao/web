@@ -15,7 +15,7 @@ def login(req):
         pwd = req.POST.get("password", "")
         typeValue = req.POST.get("radio", "")
         print typeValue
-        user = Student.objects.filter(studentId=userId, password=pwd)
+        user = Student.objects.filter(stuId=userId, password=pwd)
         if user:
             req.session['username'] = user[0].name;
             return HttpResponseRedirect('/assistant/')
