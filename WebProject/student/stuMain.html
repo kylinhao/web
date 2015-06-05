@@ -10,7 +10,8 @@
 
     <script>
         $(document).ready(function () {
-            $(".main-content iframe").height(document.body.scrollHeight - 160);
+            $(".main-content iframe").height(document.body.scrollHeight - 100);
+            $(".sidebar-menu").height(document.body.scrollHeight)
             $(".main-menu li").mouseenter(function () {
                 $(this).css("cursor", "pointer")
                 var text = $(this).attr("class");

@@ -8,7 +8,9 @@
         body {
             font-family: "Microsoft YaHei";
         }
-
+        label {
+            font-weight: normal;
+        }
         .form-control {
             /*width: 300px;*/
             display: inline-block;
@@ -26,12 +28,21 @@
         <legend>提出问题</legend>
         <form class="form" role="form">
             <div class="form-group">
+                <label>请选择课程</label>
+                <select class="form-control">
+                    <option>课程名</option>
+                    <option>课程A</option>
+                    <option>课程B</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label>问题简述</label>
                 <input type="text" class="form-control">
             </div>
+
             <div class="form-group">
                 <label>问题详情</label>
-                <textarea rows="6" class="form-control"></textarea>
+                <textarea rows="4" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label></label>

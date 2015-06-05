@@ -69,13 +69,17 @@ li a,.header a {
     width: 256px;
 }
 
-li a:hover {
+li:hover {
     color: blue;
     cursor: pointer;
     text-decoration: none;
     /*font-weight: bold;*/
 }
-
+li a:hover i {
+    color: blue;
+    text-decoration: none;
+    /*font-weight: bold;*/
+}
 .icon-setting {
     padding-right: 20px;
     text-align: center;
