@@ -1,0 +1,64 @@
+body {
+    font-family:"Microsoft YaHei";
+}
+li {
+    list-style-type: none;
+    float: right;
+    font-family: "Microsoft YaHei";
+}
+
+.form-control {
+    position: relative;
+    height: auto;
+    font-size: 16px;
+}
+
+input {
+    margin-top: 16px;
+}
+
+button {
+    margin-left: 30px;
+    width: 30%;
+}
+
+p {
+    color: gray;
+}
+
+.middle {
+    margin-top: 10px;
+    height: 500px;
+    background-image: url("Image/campus.jpg");
+}
+
+.form-login {
+    margin-left: 56%;
+    padding: 160px 60px 60px 60px; /*top right bottom left*/
+    max-width: 367px;
+    background-image: url("Image/login-frame.png");
+    background-position: 0 60px;
+    background-repeat: no-repeat;
+}
+
+.form-control-feedback {
+    padding-top: 2px;
+    right: 8px;
+    color: #ddd;
+}
+
+.header-left {
+    float: left;
+    width: 36%;
+}
+
+.header-right {
+    padding-top: 60px;
+}
+
+
+.footer {
+    text-align: center;
+    margin-top: 16px;
+    color:gray;
+}

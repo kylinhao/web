@@ -1,0 +1,44 @@
+body {
+    margin-top: 10px;
+    font-family: "Microsoft YaHei";
+    min-width: 800px;
+}
+
+.header-left {
+    width: 40%;
+    float: left;
+
+}
+.header-right {
+    padding-top: 60px;
+    float: right;
+
+}
+
+.left-nav{
+    float: left;
+    width: 16%;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #eee;
+}
+.right-content{
+    float: right;
+    margin-top: 20px;
+    /*margin-left: 20px;*/
+    /*min-width: 540px;*/
+    width: 81.4%;
+    /*min-width: 800px;*/
+
+}
+
+table .form-control{
+    width: 200px;
+}
+.footer {
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    color:gray;
+}
