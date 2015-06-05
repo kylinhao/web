@@ -6,25 +6,24 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="stuMain.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/datepicker.css">
     <script src="../js/jquery-2.1.4.min.js"></script>
-    <script src="../js/bootstrap-datepicker.js"></script>
+
     <script>
         $(document).ready(function () {
-            $(".main-content iframe").height(document.body.scrollHeight-120);
+            $(".main-content iframe").height(document.body.scrollHeight - 160);
             $(".main-menu li").mouseenter(function () {
                 $(this).css("cursor", "pointer")
                 var text = $(this).attr("class");
                 $(this).addClass("highlight");
                 if (text == "second-menu") {
-                    $(this).find('ul').slideDown("600");
+                    $(this).find('ul').slideDown("slow");
                 }
             });
             $(".main-menu li").mouseleave(function () {
                 $(this).removeClass("highlight");
                 var text = $(this).attr("class");
                 if (text == "second-menu") {
-                    $(this).find('ul').slideUp("600");
+                    $(this).find('ul').slideUp("slow");
                 }
             });
         });
@@ -47,8 +46,8 @@
                     <i class="fa fa-caret-down icon-more"></i>
                 </a>
                 <ul>
-                    <li><a href="./info.html" target="mainframe">个人信息</a></li>
-                    <li><a href="./changePassword.html" target="mainframe">修改密码</a></li>
+                    <li><a href="./info.html" target="mainframe"><i class="fa icon-setting">-</i>个人信息</a></li>
+                    <li><a href="./changePassword.html" target="mainframe"><i class="fa icon-setting">-</i>修改密码</a></li>
                 </ul>
             </li>
             <li class="second-menu">
@@ -57,41 +56,47 @@
                     <i class="fa fa-caret-down icon-more"></i>
                 </a>
                 <ul>
-                    <li><a href="#" target="mainframe">网上选课</a></li>
-                    <li><a href="#" target="mainframe">所选课程</a></li>
-                    <li><a href="#" target="mainframe">我的课表</a></li>
+                    <li><a href="./select-course.html" target="mainframe"><i class="fa icon-setting">-</i>网上选课</a></li>
+                    <li><a href="./selected-course.html" target="mainframe"><i class="fa icon-setting">-</i>已选课程</a></li>
+                    <li><a href="./schedule.html" target="mainframe"><i class="fa icon-setting">-</i>我的课表</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" target="mainframe"><i class="fa fa-book icon-setting"></i>学习资料</a>
+                <a href="./homework.html" target="mainframe"><i class="fa fa-book icon-setting"></i>课程作业</a>
             </li>
             <li>
-                <a href="#" target="mainframe"><i class="fa fa-clock-o icon-setting"></i>考试安排</a>
+                <a href="./exam.html" target="mainframe"><i class="fa fa-clock-o icon-setting"></i>考试安排</a>
             </li>
             <li>
-                <a href="#" target="mainframe"><i class="fa fa-arrow-up icon-setting"></i>作业提交</a>
+                <a href="./homework-submit.html" target="mainframe"><i class="fa fa-arrow-up icon-setting"></i>作业提交</a>
             </li>
             <li>
-                <a href="#" target="mainframe"><i class="fa fa-question icon-setting"></i>提出问题</a>
+                <a href="./question.html" target="mainframe"><i class="fa fa-question icon-setting"></i>提出问题</a>
             </li>
             <li>
-                <a href="#" target="mainframe"><i class="fa fa-cloud icon-setting"></i>关于我们</a>
+                <a href="./about-us.html" target="mainframe"><i class="fa fa-cloud icon-setting"></i>关于我们</a>
             </li>
         </ul>
     </div>
 
 </div>
 <div class="main-content">
-    <div align="center">
-        <h1>科大教务管理系统</h1>
+    <div style="text-align: center;">
+        <!--<h2><img src="../image/icon.png" style="width: 64px;vertical-align: middle; ">科大教学管理系统</h2>-->
+        <h1>科大教学管理系统</h1>
     </div>
     <div class="pull-right">
         <i class="fa fa-sign-out" style="padding-right: 10px"></i><a href="">退出系统</a>
     </div>
 
-    <iframe id="main-frame" name="mainframe" scrolling="no" >
+    <iframe id="main-frame" name="mainframe" scrolling="no">
 
     </iframe>
+
+    <div class="footer">
+        &copy;2015 kylin group. 版权所有 Email Address: kylinhao@kylin.com
+    </div>
+
 </div>
 </body>
 </html>

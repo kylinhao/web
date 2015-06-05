@@ -29,14 +29,14 @@ p {
 .middle {
     margin-top: 10px;
     height: 500px;
-    background-image: url("Image/campus.jpg");
+    background-image: url("image/campus.jpg");
 }
 
 .form-login {
     margin-left: 56%;
     padding: 160px 60px 60px 60px; /*top right bottom left*/
     max-width: 367px;
-    background-image: url("Image/login-frame.png");
+    background-image: url("image/login-frame.png");
     background-position: 0 60px;
     background-repeat: no-repeat;
 }
