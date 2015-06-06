@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>学生</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/stu-main.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    {% block styleCSS %}{% endblock %}
+    <script>
+        $(document).ready(function () {
+            text = "."
+            $(".main-show").height(document.body.scrollHeight - 160);
+            $(".sidebar-menu").height(document.body.scrollHeight)
+            $(".main-menu li").mouseenter(function () {
+                $(this).css("cursor", "pointer")
+                var text = $(this).attr("class");
+                $(this).addClass("highlight");
+                if (text == "second-menu") {
+                    $(this).find('ul').slideDown("slow");
+                }
+            });
+            $(".main-menu li").mouseleave(function () {
+                $(this).removeClass("highlight");
+                var text = $(this).attr("class");
+                if (text == "second-menu") {
+                    $(this).find('ul').slideUp("slow");
+                }
+            });
+            $('a').onclick(function(){
+                text = $(this).attr("href");
+            });
+            function get_text(){
+                return text;
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="sidebar-menu">
+    <div class="header">
+        <div class="logo"><a><i class="fa fa-user icon-setting"></i>{{ user.name }}</a></div>
+        <div class="sidebar-hide"><a></i>学生</a></div>
+        <!--<i class="fa fa-list-ul"> -->
+    </div>
+    <div>
+        <ul class="main-menu ">
+            <li class="active">
+                <a href="/student/homepage/" target=""><i class="fa fa-home icon-setting"></i>个人主页</a>
+            </li>
+            <li class="second-menu">
+                <a href="#">
+                    <i class="fa fa-info  icon-setting"></i>信息管理
+                    <i class="fa fa-caret-down icon-more"></i>
+                </a>
+                <ul>
+                    <li><a href="/student/info/" target=""><i class="fa icon-setting">-</i>个人信息</a></li>
+                    <li><a href="/student/change-password/" target=""><i class="fa icon-setting">-</i>修改密码</a></li>
+                </ul>
+            </li>
+            <li class="second-menu">
+                <a>
+                    <i class="fa fa-table icon-setting "></i>课程管理
+                    <i class="fa fa-caret-down icon-more"></i>
+                </a>
+                <ul>
+                    <li><a href="/student/select-course/" target=""><i class="fa icon-setting">-</i>网上选课</a></li>
+                    <li><a href="/student/selected-course/" target=""><i class="fa icon-setting">-</i>已选课程</a></li>
+                    <li><a href="/student/schedule/" target=""><i class="fa icon-setting">-</i>我的课表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/student/homework/" target=""><i class="fa fa-book icon-setting"></i>课程作业</a>
+            </li>
+            <li>
+                <a href="/student/exam/" target=""><i class="fa fa-clock-o icon-setting"></i>考试安排</a>
+            </li>
+            <li>
+                <a href="/student/homework-submit/" target=""><i class="fa fa-arrow-up icon-setting"></i>作业提交</a>
+            </li>
+            <li>
+                <a href="/student/question/" target=""><i class="fa fa-question icon-setting"></i>提出问题</a>
+            </li>
+            <li>
+                <a href="/student/about-us/" target=""><i class="fa fa-cloud icon-setting"></i>关于我们</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div class="main-content">
+    <div style="text-align: center;">
+        <!--<h2><img src="../image/icon.png" style="width: 64px;vertical-align: middle; ">科大教学管理系统</h2>-->
+        <h1>科大教学管理系统</h1>
+    </div>
+    <div class="pull-right">
+        <i class="fa fa-sign-out" style="padding-right: 10px"></i><a href="">退出系统</a>
+    </div>
+    <div class="main-show">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="footer">
+        &copy;2015 kylin group. 版权所有 Email Address: kylinhao@kylin.com
+    </div>
+
+</div>
+</body>
+</html>

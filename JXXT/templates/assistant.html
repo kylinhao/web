@@ -31,7 +31,7 @@
 <div class="container">
     <div class="header">
         <img class="header-left" src="/static/Image/ustc.gif">
-        <span class="header-right">你好，<a>{{ username }}</a>欢迎回来&nbsp;&nbsp;&nbsp;<a href="/logout">退出系统</a></span>
+        <span class="header-right">你好，<a>{{ user.name }}</a>欢迎回来&nbsp;&nbsp;&nbsp;<a href="/logout">退出系统</a></span>
     </div>
 </div>
 
@@ -53,9 +53,9 @@
             <table class="table table-bordered">
                 <tr>
                     <td>工号：</td>
-                    <td><input class="form-control input-sm" readonly type="text" placeholder="{{ astId }}"></td>
+                    <td><input class="form-control input-sm" readonly type="text" placeholder="{{ user.astId }}"></td>
                     <td>姓名：</td>
-                    <td><input class="form-control input-sm" readonly type="text" placeholder=" {{ name }}"></td>
+                    <td><input class="form-control input-sm" readonly type="text" placeholder=" {{ user.name }}"></td>
                 </tr>
                 <tr>
                     <td>邮箱：</td>
@@ -67,9 +67,9 @@
 
                 <tr>
                     <td>开始时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ beginTime }}"></td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ user.beginTime }}"></td>
                     <td>结束时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ endTime }}"></td>
+                    <td><input class="form-control input-sm" type="text" placeholder="{{ user.endTime }}"></td>
                 </tr>
             </table>
         </div>
@@ -79,7 +79,6 @@
             <br>
 
             <form>
-                {% csrf_token %}
                 {{ form.as_p }}
             </form>
             <table class="table table-bordered ">
@@ -115,7 +114,6 @@
             <br>
 
             <form>
-                {% csrf_token %}
                 {{ form.as_p }}
             </form>
             <table class="table table-bordered ">
@@ -142,7 +140,6 @@
             <label><h5>问题内容</h5></label>
             <br>
             <form>
-                {% csrf_token %}
                 {{ form.as_p }}
             </form>
             <div class="">

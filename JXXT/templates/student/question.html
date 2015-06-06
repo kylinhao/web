@@ -1,0 +1,38 @@
+{% extends 'student/stu-main.html' %}
+
+{% block content %}
+    <fieldset>
+        <legend>提出问题</legend>
+        <form class="form" role="form">
+            <div class="form-group">
+                <label>问题简述{{ user.name }}</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>问题详情</label>
+                <textarea rows="6" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label></label>
+                <button type="submit" class="btn btn-success" id="submit">提交</button>
+            </div>
+        </form>
+        <table class="table table-bordered">
+            <tr>
+                <td></td>
+                <td>课程</td>
+                <td>问题</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>C++</td>
+                <td>设计模式怎么做</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Web</td>
+                <td>使用什么语言写</td>
+            </tr>
+        </table>
+    </fieldset>
+{% endblock %}

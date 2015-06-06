@@ -1,0 +1,41 @@
+{% extends 'student/stu-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        label {
+            width: 100px;
+            font-weight: normal;
+            text-align: right;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend>考试安排</legend>
+        <table class="table table-bordered" >
+            <tr>
+                <td></td>
+                <td>课程</td>
+                <td>老师</td>
+                <td>考试时间</td>
+                <td>考试成绩</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>C++</td>
+                <td>老师A</td>
+                <td>2015-06-10</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Web</td>
+                <td>老师B</td>
+                <td>2015-06-17</td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+{% endblock %}

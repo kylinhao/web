@@ -34,9 +34,9 @@ label{
     border-color: #ccc;
     text-align: center;
 }
-input[type=text]{
+table input[type=text]{
     float:left;
-    width: 60%;
+    width: 200px;
     margin-left: 10px;
     margin-right: 10px;
 }
