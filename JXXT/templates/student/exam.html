@@ -17,24 +17,19 @@
             <tr>
                 <td></td>
                 <td>课程</td>
-                <td>老师</td>
+{#                <td>老师</td>#}
                 <td>考试时间</td>
-                <td>考试成绩</td>
+{#                <td>考试成绩</td>#}
             </tr>
+            {% for t in exam_time %}
             <tr>
-                <td>1</td>
-                <td>C++</td>
-                <td>老师A</td>
-                <td>2015-06-10</td>
-                <td></td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ t.name }}</td>
+                <td>{{ t.examTime }}</td>
+{#                <td>2015-06-10</td>#}
+{#                <td></td>#}
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Web</td>
-                <td>老师B</td>
-                <td>2015-06-17</td>
-                <td></td>
-            </tr>
+            {% endfor %}
         </table>
     </fieldset>
 </div>

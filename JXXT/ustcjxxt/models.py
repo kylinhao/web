@@ -61,12 +61,18 @@ class Teacher(models.Model):
 class Course(models.Model):
     courseId = models.CharField(max_length=30, primary_key=True)
     name = models.CharField(max_length=60)
+    beginTime = models.DateField(blank=True)
+    endTime = models.DateField(blank=True)
+    classTime = models.CharField(max_length=30)
+    classroom = models.CharField(max_length=30)
+    examTime = models.CharField(max_length=100, blank=True)
 
     class Meta:
         db_table = 'db_course'
         ordering = ["courseId"]
 
     def __unicode__(self):
+        # return  self.courseId
         return u'%s %s' % (self.courseId, self.name)
 
 
@@ -87,7 +93,7 @@ class Assistant(models.Model):
 
 class Question(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     stuId = models.ForeignKey(Student)
     courseId = models.ForeignKey(Course)
 
@@ -131,13 +137,13 @@ class SCourse(models.Model):
         unique_together = (('stuId', 'courseId'),)
 
     def __unicode__(self):
-        return u'%s %s' % (self.stuId, self.name)
+        return u'%s %s' % (self.stuId, self.courseId)
 
 
 # 老师 布置作业
 class TeaHomework(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     attachment = models.FileField(upload_to="/homework/", blank=True)
     courseId = models.ForeignKey(Course)
     teaId = models.ForeignKey(Teacher)

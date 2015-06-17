@@ -10,7 +10,10 @@
     {% block styleCSS %}{% endblock %}
     <script>
         $(document).ready(function () {
-            text = "."
+            $(".question-state").hide()
+            $(".state").mousedown(function(){
+                $(".question-state").toggle()
+            });
             $(".main-show").height(document.body.scrollHeight - 160);
             $(".sidebar-menu").height(document.body.scrollHeight)
             $(".main-menu li").mouseenter(function () {
@@ -28,12 +31,6 @@
                     $(this).find('ul').slideUp("slow");
                 }
             });
-            $('a').onclick(function(){
-                text = $(this).attr("href");
-            });
-            function get_text(){
-                return text;
-            }
         });
     </script>
 </head>
@@ -95,7 +92,7 @@
         <h1>科大教学管理系统</h1>
     </div>
     <div class="pull-right">
-        <i class="fa fa-sign-out" style="padding-right: 10px"></i><a href="">退出系统</a>
+        <i class="fa fa-sign-out" style="padding-right: 10px"></i><a href="/logout/">退出系统</a>
     </div>
     <div class="main-show">
         {% block content %}

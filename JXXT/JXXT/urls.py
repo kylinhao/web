@@ -10,11 +10,18 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^login/', 'ustcjxxt.views.login'),
-    url(r'^student/$','ustcjxxt.views.student'),
-    url(r'^(.+)/(.+)/$','ustcjxxt.views.redirect_url'),
+    url(r'^login/$', 'ustcjxxt.views.login'),
+    url(r'^student/$', 'ustcjxxt.views.student'),
+    # url(r'^(.+)/(.+)/$','ustcjxxt.views.redirect_url'),
+    url(r'^(.+)/info/$', 'ustcjxxt.views.info'),
+    url(r'^(.+)/change-password/$', 'ustcjxxt.views.change_pwd'),
+    url(r'^(.+)/homepage/$', 'ustcjxxt.views.homepage'),
+    url(r'^(.+)/homework/$', 'ustcjxxt.views.homework'),
+    url(r'^student/exam/$', 'ustcjxxt.views.stu_exam'),
+    url(r'^student/homework-submit/$', 'ustcjxxt.views.homework_submit'),
+    url(r'^(.+)/question/$', 'ustcjxxt.views.submit_questions'),
     url(r'^assistant/', 'ustcjxxt.views.assistant'),
-    url(r"^logout/",'ustcjxxt.views.logout'),
+    url(r"^logout/", 'ustcjxxt.views.logout'),
 ]
 
 # urlpatterns +=[

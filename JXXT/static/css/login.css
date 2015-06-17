@@ -11,6 +11,7 @@ li {
     position: relative;
     height: auto;
     font-size: 16px;
+    border-radius: 0;
 }
 
 input {
@@ -61,4 +62,8 @@ p {
     text-align: center;
     margin-top: 16px;
     color:gray;
+}
+
+.btn{
+    border-radius: 0;
 }

@@ -71,3 +71,9 @@ textarea{
     left: 36%;
     color:gray;
 }
+.form-control{
+    border-radius: 0;
+}
+.btn{
+    border-radius: 0;
+}
