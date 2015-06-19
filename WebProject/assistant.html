@@ -27,131 +27,131 @@
     </script>
 </head>
 <body>
+<nav class="navbar navbar-default  navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" style="font-size: 24px" href="#">USTC</a>
 
-<div class="container">
-    <img class="header-left" src="image/ustc.gif">
-    <span class="header-right">你好，<a>{{ username }}</a>欢迎回来&nbsp;&nbsp;&nbsp;<a href="/logout">退出系统</a></span>
-</div>
-
-<div class=" container ">
-    <div class="left-nav">
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active"><a href="#home">个人主页</a></li>
-            <li role="presentation"><a href="#homework">学生作业</a></li>
-            <li role="presentation"><a href="#problem">学生问题</a></li>
-            <li role="presentation"><a href="#content">问题内容</a></li>
-        </ul>
-    </div>
-
-
-    <div class="right-content">
-
-        <div id="home">
-            <table class="table table-bordered">
-                <tr>
-                    <td>工号：</td>
-                    <td><input class="form-control input-sm" readonly type="text" placeholder="{{ astId }}"></td>
-                    <td>姓名：</td>
-                    <td><input class="form-control input-sm" readonly type="text" placeholder=" {{ name }}"></td>
-                </tr>
-                <tr>
-                    <td>邮箱：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ email }}"></td>
-
-                    <td>手机号：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ phoneNumber }}"></td>
-                </tr>
-
-                <tr>
-                    <td>开始时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ beginTime }}"></td>
-                    <td>结束时间：</td>
-                    <td><input class="form-control input-sm" type="text" placeholder="{{ endTime }}"></td>
-                </tr>
-            </table>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#home">个人主页</a></li>
+                <li><a href="#homework">学生作业</a></li>
+                <li><a href="#problem">学生问题</a></li>
+                <li><a href="#content">问题内容</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a>你好，{{ username }}欢迎回来</a></li>
+                <li><a href="/logout/">注销登录</a></li>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <div id="homework">
 
-            <!--<form>-->
+<div class=" container main ">
+    <div id="home">
+        <form class="form-horizontal text-center" >
+            <div class="form-group">
+                <label>工号：</label>
+                <input class="form-control input-sm" readonly type="text" placeholder="{{ astId }}">
+            </div>
+            <div class="form-group">
+                <label>姓名：</label>
+                <input class="form-control" readonly type="text" placeholder=" {{ name }}">
+            </div>
+            <div class="form-group">
+                <label>邮箱：</label>
+                <input class="form-control" type="text" placeholder="{{ email }}">
+            </div>
+            <div class="form-group">
+                <label>手机号：</label>
+                <input class="form-control" type="text" placeholder="{{ phoneNumber }}">
+            </div>
+            <div class="form-group">
+                <label>开始时间：</label>
+                <input class="form-control" type="text" placeholder="{{ beginTime }}">
+            </div>
+            <div class="form-group">
+                <label>结束时间：</label>
+                <input class="form-control" type="text" placeholder="{{ endTime }}">
+            </div>
+            <div class="form-group">
+                <label></label>
+                <button type="submit" class="btn btn-default">修改信息</button>
+            </div>
+        </form>
+
+    </div>
+    <div id="homework">
+        <table class="table table-bordered ">
+            <tr>
+                <td>姓名</td>
+                <td>学号</td>
+                <td>下载</td>
+                <td>评分</td>
+                <td>提交</td>
+            </tr>
+            <tr>
+                <td>光棍1</td>
+                <td>s001</td>
+                <td>s001.zip</td>
+                <td>
+                    <input class="form-control" type="text">
+                </td>
+                <td><a class="btn btn-default  btn-sm" href="#">确定</a></td>
+            </tr>
+            <tr>
+                <td>光棍2</td>
+                <td>s002</td>
+                <td>s002.zip</td>
+                <td class=""><input class="form-control" type="text"></td>
+                <td><a class="btn btn-default  btn-sm" href="#">确定</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="problem">
+        <form>
+            {% csrf_token %}
             {{ form.as_p }}
-            <!--</form>-->
-            <table class="table table-bordered ">
-                <tr>
-                    <td>姓名</td>
-                    <td>学号</td>
-                    <td>下载</td>
-                    <td>评分</td>
-                    <td>提交</td>
-                </tr>
-                <tr>
-                    <td>光棍1</td>
-                    <td>s001</td>
-                    <td>s001.zip</td>
-                    <td>
-                        <input class="form-control input-sm" type="text">
-                    </td>
-                    <td><a class="btn btn-default  btn-sm" href="#">确定</a></td>
-                </tr>
-                <tr>
-                    <td>光棍2</td>
-                    <td>s002</td>
-                    <td>s002.zip</td>
-                    <td class=""><input class="form-control input-sm" type="text"></td>
-                    <td><a class="btn btn-default  btn-sm" href="#">确定</a></td>
-                </tr>
-            </table>
-        </div>
-        <div id="problem">
-            <form>
-                {% csrf_token %}
-                {{ form.as_p }}
-            </form>
-            <table class="table table-bordered ">
-                <tr>
-                    <td>问题</td>
-                    <td>姓名</td>
-                    <td>学号</td>
-                </tr>
-                <tr>
-                    <td><a href="#">为什么我还没有女朋友</a></td>
-                    <td>光棍1</td>
-                    <td>s002</td>
+        </form>
+        <table class="table table-bordered ">
+            <tr>
+                <td>问题</td>
+                <td>姓名</td>
+                <td>学号</td>
+            </tr>
+            <tr>
+                <td><a href="#">为什么我还没有女朋友</a></td>
+                <td>光棍1</td>
+                <td>s002</td>
 
-                </tr>
-                <tr>
-                    <td><a href="#">为什么我还没有男朋友</a></td>
-                    <td>光棍2</td>
-                    <td>s001</td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="content">
-            <form>
-                {% csrf_token %}
-                {{ form.as_p }}
-            </form>
-            <div>
-                <span><h5>问题概述:</h5></span>
-                <input type="text" class="form-control" placeholder="{{ title }}">
-                <span class=""><h5>问题详情:</h5></span>
-                <textarea class="form-control" rows="6" readonly placeholder="{{ content }}"></textarea>
-            </div>
-            <div style="margin-top: 10px;">
-                <h5 class="">回答者A：</h5>
-                <span>{{ opinionA }}</span>
-                <h5>回答者B：</h5>
-                <span>{{ opinionB }}</span>
-            </div>
-            <div>
-                <span class=""><h5>回答问题:</h5></span>
-                <textarea class="form-control" rows="6" placeholder="{{ content }}"></textarea>
-                <a class="btn btn-default" style="margin-top: 6px" href="#">回答问题</a>
-            </div>
-        </div>
+            </tr>
+            <tr>
+                <td><a href="#">为什么我还没有男朋友</a></td>
+                <td>光棍2</td>
+                <td>s001</td>
+            </tr>
+        </table>
     </div>
 
+    <div id="content">
+        <div>
+            <span><h5>问题概述:</h5></span>
+            <input type="text" class="form-control" placeholder="{{ title }}">
+            <span class=""><h5>问题详情:</h5></span>
+            <textarea class="form-control" rows="6" readonly placeholder="{{ content }}"></textarea>
+        </div>
+        <div style="margin-top: 10px;">
+            <h5 class="">回答者A：</h5>
+            <span>{{ opinionA }}</span>
+            <h5>回答者B：</h5>
+            <span>{{ opinionB }}</span>
+        </div>
+        <div>
+            <span class=""><h5>回答问题:</h5></span>
+            <textarea class="form-control" rows="6" placeholder="{{ content }}"></textarea>
+            <a class="btn btn-default" style="margin-top: 6px" href="#">回答问题</a>
+        </div>
+    </div>
 </div>
 
 <div class="footer">

@@ -4,33 +4,20 @@ body {
     min-width: 800px;
 }
 
-.header-left {
-    width: 40%;
-    float: left;
-
+.main{
+    margin-top: 70px;
 }
-.header-right {
-    padding-top: 60px;
-    float: right;
-
+#home{
+    margin-top: 100px;
 }
-
-.left-nav{
-    float: left;
-    width: 16%;
-    text-align: center;
-    margin-top: 20px;
-    border: 1px solid #eee;
+.form-control{
+    width: 300px;
+    display:inline-block;
 }
-.right-content{
-    float: right;
-    margin-top: 20px;
-    width: 81.4%;
-
-}
-
-table .form-control{
-    width: 200px;
+label{
+    font-weight: normal;
+    width: 100px;
+    text-align: right;
 }
 .footer {
     text-align: center;
