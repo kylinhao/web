@@ -1,5 +1,38 @@
-{% extends 'student/stu-main.html' %}
+﻿{% extends 'student/stu-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        td {
+            height: 60px;
+        }
+    </style>
+    <script src="/static/js/calendar.js"></script>
+    <script>
+    $(document).ready(function(){
+        calendar()
+    })
+    </script>
+
+{% endblock %}
+
 
 {% block content %}
-<h1>hello world!</h1>
+    <fieldset>
+    <legend>个人主页</legend>
+        <br>
+        <p id="calendar-time" class="pull-right">时间</p>
+        <p id="calendar-name">6月日历</p>
+        <br>
+        <table id="calendar-table" class="table table-bordered" onload="calendar()">
+            <tr>
+                <td>日</td>
+                <td>一</td>
+                <td>二</td>
+                <td>三</td>
+                <td>四</td>
+                <td>五</td>
+                <td>六</td>
+            </tr>
+        </table>
+    </fieldset>
 {% endblock %}

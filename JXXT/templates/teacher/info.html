@@ -1,0 +1,68 @@
+{% extends 'teacher/tea-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        label {
+            width: 100px;
+            font-weight: normal;
+            text-align: right;
+        }
+
+        .form {
+            margin-top: 60px;
+        }
+
+        .form-control {
+            width: 300px;
+            display: inline-block;
+            margin: 5px 5px 5px 20px;
+        }
+
+        button {
+            width: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend>个人信息</legend>
+        <form class="form" method="post" role="form" style="padding-left:19% ">
+            <div class="form-group">
+                <label>工号：</label>
+                <input type="text" value="{{ user.teaId }}" readonly class="form-control">
+            </div>
+            <div class="form-group">
+                <label>姓名：</label>
+                <input type="text" value="{{ user.name }}" readonly class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>年龄：</label>
+                <input type="text" value="{{ user.age }}" readonly class="form-control">
+            </div>
+            <div class="form-group">
+                <label>性别：</label>
+                <input type="text" value="{{ user.sex }}" readonly class="form-control">
+            </div>
+            <div class="form-group">
+                <label>地址：</label>
+                <input type="text" value="{{ user.address }}" name ="address" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>邮箱：</label>
+                <input type="email" value="{{ user.email }}" name ="email"  class="required email form-control error">
+            </div>
+            <div class="form-group">
+                {% if result_type == 1  %}
+                     <label></label>
+                    <span style="margin-left: 20px;color: green;">修改成功</span>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label></label>
+                <button type="submit" style="margin-left: 20px" class="btn btn-success" id="submit">修改</button>
+            </div>
+        </form>
+    </fieldset>
+{% endblock %}

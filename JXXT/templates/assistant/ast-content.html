@@ -1,0 +1,23 @@
+{% extends 'assitant/assitant.html' %}
+
+{% block content %}
+    <div id="content">
+        <div>
+            <span><h5>问题概述:</h5></span>
+            <input type="text" class="form-control" placeholder="{{ title }}">
+            <span class=""><h5>问题详情:</h5></span>
+            <textarea class="form-control" rows="6" readonly placeholder="{{ content }}"></textarea>
+        </div>
+        <div style="margin-top: 10px;">
+            <h5 class="">回答者A：</h5>
+            <span>{{ opinionA }}</span>
+            <h5>回答者B：</h5>
+            <span>{{ opinionB }}</span>
+        </div>
+        <div>
+            <span class=""><h5>回答问题:</h5></span>
+            <textarea class="form-control" rows="6" placeholder="{{ content }}"></textarea>
+            <a class="btn btn-default" style="margin-top: 6px" href="#">回答问题</a>
+        </div>
+    </div>
+{% endblock %}

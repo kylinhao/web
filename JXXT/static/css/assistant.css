@@ -1,79 +1,28 @@
 body {
     margin-top: 10px;
     font-family: "Microsoft YaHei";
-    min-width: 1000px;
-}
-.header{
-    margin-bottom: 10px;
-    /*border: 1px solid red;*/
-}
-.header-left {
-    width: 40%;
-    float: left;
-
-}
-.header-right {
-    margin-top: 60px;
-    float: right;
-
+    min-width: 800px;
 }
 
-
-#home td {
-    text-align: right;
+.main{
+    margin-top: 70px;
 }
-
-
-.title-position{
-    float: left;
+#home{
+    margin-top: 100px;
+}
+.form-control{
+    width: 300px;
+    display:inline-block;
 }
 label{
-    width: 100%;
-    color: #333;
-    background-color: lightblue;
-    border-color: #ccc;
-    text-align: center;
-}
-table input[type=text]{
-    float:left;
-    width: 200px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-textarea{
-    width: 100%;
-}
-
-
-.left-nav{
-    width: 14%;
-    /*float: left;*/
-    position: absolute;
-    border: 1px solid #eee;
-    left: 140px;
-    top: 119px;
-    min-width: 60px;
-    text-align: center;
-
-}
-.right-content{
-    margin-left: 240px;
-    padding-top: 20px;
-    /*float: left;*/
-    width: 80%;
-    min-width: 500px;
+    font-weight: normal;
+    width: 100px;
+    text-align: right;
 }
 .footer {
     text-align: center;
-    /*margin-top: 16px;*/
     position: fixed;
     bottom: 10px;
-    left: 36%;
+    width: 100%;
     color:gray;
-}
-.form-control{
-    border-radius: 0;
-}
-.btn{
-    border-radius: 0;
 }

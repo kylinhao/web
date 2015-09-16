@@ -1,40 +1,107 @@
 {% extends 'student/stu-main.html' %}
 
+{% block styleCSS %}
+    <style>
+        td {
+            border: none;
+        }
+
+        td a {
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".sced").hide()
+        });
+        function show() {
+            if (document.getElementById("selected").checked)
+                $(".selected").show()
+            else
+                $(".selected").hide()
+            if (document.getElementById("select").checked)
+                $(".select").show()
+            else
+                $(".select").hide()
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
     <fieldset>
         <legend>网上选课</legend>
-        <table class="table table-bordered">
-            <tr>
-                <td></td>
-                <td>课程编号</td>
-                <td>课程</td>
-                <td>授课教师</td>
-                <td>上课时间</td>
-                <td>已选人数</td>
-                <td>操作</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>C1</td>
-                <td>C++</td>
-                <td>教师A</td>
-                <td>2015-09-10</td>
-                <td>8/100</td>
-                <td>
-                    <button type="submit" class="btn btn-default btn-sm">选课</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>C2</td>
-                <td>Web</td>
-                <td>教师B</td>
-                <td>2015-09-16</td>
-                <td>100/100</td>
-                <td>
-                    <button type="submit" class="btn btn-default btn-sm">选课</button>
-                </td>
-            </tr>
-        </table>
+        <div class="checkbox pull-right">
+            <label><input id="selected" type="checkbox" checked onclick="show()">已选课程</label>
+            <label><input id="select" type="checkbox" checked onclick="show()">可选课程</label>
+        </div>
+        <br>
+<br>
+        <div class="panel panel-default" style="border-top:none;height: 500px;overflow:auto;">
+            <table class="table table-bordered table-hover">
+                <tr style="border: none">
+                    <div class="sced" style="display: none">
+                        <tr>
+                            {#                        <td></td>#}
+                            <td>课程编号</td>
+                            <td>课程</td>
+                            <td>上课时间</td>
+                            <td>授课教师</td>
+                            <td>已选人数</td>
+                            <td>操作</td>
+                            <td>备注</td>
+                        </tr>
+
+                        {% for itemed in sced_list %}
+                            <tr class="selected">
+                                {#                            <td>{{ forloop.counter }}</td>#}
+                                <td>{{ itemed.0.courseId }}</td>
+                                <td>{{ itemed.0.name }}</td>
+                                <td>{{ itemed.0.classTime }}</td>
+                                <td>
+                                    {% for t in itemed.1 %}
+                                        {% if  forloop.counter != 1 %},
+                                        {% endif %}
+                                        {{ t.teaId.name }}
+                                    {% endfor %}
+                                </td>
+                                <td>{{ itemed.2 }}</td>
+                                <form method="post" role="form" enctype="multipart/form-data">
+                                    <input type="hidden" name="c-id" value="{{ itemed.0.courseId }}">
+                                    <td>
+                                        <input type="hidden" name="operate-type" value="cancel">
+                                        <button name="cancel" type="submit" class="btn btn-default btn-sm">取消</button>
+                                    </td>
+                                </form>
+                                <td>{{ itemed.0.ps }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        {% for item in sc_list %}
+                            <tr class="select">
+                                {#                            <td>{{ forloop.counter }}</td>#}
+                                <td>{{ item.0.courseId }}</td>
+                                <td>{{ item.0.name }}</td>
+                                <td>{{ item.0.classTime }}</td>
+                                <td>
+                                    {% for t in item.1 %}
+                                        {% if  forloop.counter != 1 %},
+                                        {% endif %}
+                                        {{ t.teaId.name }}
+                                    {% endfor %}
+                                </td>
+                                <td>{{ item.2 }}</td>
+                                <form method="post" role="form" enctype="multipart/form-data">
+                                    <input type="hidden" name="c-id" value="{{ item.0.courseId }}">
+                                    <td>
+                                        <input type="hidden" name="operate-type" value="select">
+                                        <button type="submit" class="btn btn-default btn-sm">选课</button>
+                                    </td>
+                                </form>
+                                <td>{{ item.0.ps }}</td>
+                            </tr>
+                        {% endfor %}
+                    </div>
+            </table>
+        </div>
     </fieldset>
 {% endblock %}

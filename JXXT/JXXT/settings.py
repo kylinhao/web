@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for JXXT project.
 
@@ -10,11 +11,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.cstaom/en/1.8/ref/settings/
 """
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SESSION_COOKIE_AGE=60*30
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,10 +56,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'JXXT.urls'
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__), '../templates').replace('\\','/'),],
+        'DIRS': [os.path.join(os.path.dirname(__file__), '../templates').replace('\\', '/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'jxxt.db',
-        'USER':'root',
+        'USER': 'root',
         'PASSWORD': 'haolin',
         'HOST': '',
         'PORT': '',
@@ -114,16 +120,21 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),
+    os.path.join(os.path.dirname(__file__), '../static/').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), '../upload/').replace('\\', '/'),
 )
 
-MEDIA_ROOT =(
-
+MEDIA_URL = '/upload/'
+MEDIA_ROOT = (
+    os.path.join(os.path.dirname(__file__), '../upload/').replace('\\', '/')
 )
-# TEMPLATE_DIRS = (
-#     Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-#     Always use forward slashes, even on Windows.
-#     Don't forget to use absolute paths, not relative paths.
-#     'E:/DjangoProject/JXXT/templates',
-#     # os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
-# )
+
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': '科大教学管理系统',
+    'LIST_PER_PAGE': 10,
+    'MENU': (
+        'sites',
+        {'app': 'ustcjxxt', 'label': u'教学管理', 'icon': 'icon-wrench'},
+    ),
+}

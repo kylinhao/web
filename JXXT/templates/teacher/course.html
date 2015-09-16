@@ -1,0 +1,28 @@
+{% extends 'teacher/tea-main.html' %}
+
+{% block content %}
+    <fieldset>
+        <legend>所教课程</legend>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td>序号</td>
+                <td>课程编号</td>
+                <td>课程</td>
+                <td>上课时间</td>
+                <td>上课地点</td>
+                <td>已选人数</td>
+                <td>上传成绩</td>
+                {% for c in c_info %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ c.courseId }}</td>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.classTime }}</td>
+                        <td>{{ c.classroom }}</td>
+                        <td></td>
+                        <td><a href="{%  url 'upload_score' c.courseId %}" class="btn btn-default btn-sm">上传成绩</a></td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </fieldset>
+{% endblock %}

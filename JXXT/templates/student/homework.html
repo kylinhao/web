@@ -3,34 +3,64 @@
 {% block styleCSS %}
     <style>
         label {
-            width: 100px;
             font-weight: normal;
-            text-align: right;
+        }
+
+        a {
+            cursor: pointer;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            $(".tr-line").click(function () {
+                $(this).closest("tr").css("display", "none")
+            });
+        })
+    </script>
+    <script src="/static/js/paging.js"></script>
 {% endblock %}
 
 {% block content %}
     <fieldset>
         <legend>课程作业</legend>
-        <table class="table table-bordered">
-            <tr>
-                <td></td>
-                <td>课程</td>
-                <td>标题</td>
-                <td>老师</td>
-                <td>资料</td>
-            </tr>
-            {% for th in homework_list %}
-             <tr>
-                <td>{{ forloop.counter}}</td>
-                <td>{{ th.courseId }}</td>
-                <td>{{ th.title }}</td>
-                <td>{{ th.teaId }}</td>
-                <td>{{ th.attachment }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+            <table id="table" class="table table-bordered table-hover">
+                <tr>
+                    <td></td>
+                    <td>课程</td>
+                    <td>老师</td>
+                    <td>作业</td>
+                    <td>资料</td>
+                </tr>
+                {% for th in h_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ th.courseId }}</td>
+                        <td>{{ th.teaId }}</td>
+                        <td><a href="{% url 'stu_homework' forloop.counter %}">{{ th.title }}</a></td>
+                        <td>
+                            {% if th.attachment %}
+                                <a href="/upload/{{ th.attachment }}">{{ th.attachment }}</a></td>
+                            {% else %}
+                                暂无
+                            {% endif %}
+                    </tr>
+                    {% ifequal forloop.counter line_id %}
+                        <tr>
+                            <td colspan="4">
+                                <p>作业详情：</p>
+
+                                <p>{{ th.content }}</p>
+                            </td>
+                            <td><a class="tr-line">隐藏</a></td>
+                        </tr>
+                    {% endifequal %}
+                {% endfor %}
+            </table>
+
+            {#        <div id="btn-group" class="btn-group" role="group">#}
+            {##}
+            {#        </div>#}
+        </div>
     </fieldset>
-</div>
+
 {% endblock %}

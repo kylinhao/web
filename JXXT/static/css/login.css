@@ -26,16 +26,24 @@ button,.regist {
 p {
     color: gray;
 }
+img#ustc-logo {
+    padding-top: 10px;
+    height: 74px;
+    width: auto;
+}
 
 .middle {
     margin-top: 10px;
     height: 500px;
     background-image: url("../image/campus.jpg");
+    /*background-position-x: center;*/
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .form-login {
     margin-left: 56%;
-    padding: 160px 60px 60px 60px; /*top right bottom left*/
+    padding: 148px 60px 60px 60px; /*top right bottom left*/
     max-width: 367px;
     background-image: url("../image/login-frame.png");
     background-position: 0 60px;

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>教师</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/menu.js"></script>
+    {% block styleCSS %}{% endblock %}
+</head>
+<body>
+<div class="sidebar-menu">
+    <div class="header">
+        <div class="logo"><a><i class="fa fa-user icon-setting"></i>{{ user.name }}</a></div>
+        <div class="sidebar-hide"></i><a>教师</a></div>
+    </div>
+    <div>
+        <ul class="main-menu ">
+            <li class="active">
+                <a href="/teacher/"><i class="fa fa-home icon-setting"></i>个人主页</a>
+            </li>
+            <li class="second-menu">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-info  icon-setting"></i>信息管理
+                    <i class="fa fa-caret-down icon-more"></i>
+                </a>
+                <ul>
+                    <li><a href="/teacher/info/"><i class="fa icon-setting">-</i>个人信息</a></li>
+                    <li><a href="/teacher/change-password/"><i class="fa icon-setting">-</i>修改密码</a></li>
+                </ul>
+            </li>
+            <li class="second-menu">
+                <a>
+                    <i class="fa fa-table icon-setting "></i>课程管理
+                    <i class="fa fa-caret-down icon-more"></i>
+                </a>
+                <ul>
+                    <li><a href="/teacher/course/"><i class="fa icon-setting">-</i>所教课程</a></li>
+                    <li><a href="/teacher/schedule/"><i class="fa icon-setting">-</i>我的课表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/teacher/homework/"><i class="fa fa-book icon-setting"></i>课程作业</a>
+            </li>
+            <li>
+                <a href="/teacher/exam/"><i class="fa fa-clock-o icon-setting"></i>考试安排</a>
+            </li>
+            <li>
+                <a href="/teacher/question/"><i class="fa fa-question icon-setting"></i>课程答疑</a>
+            </li>
+            <li>
+                <a href="/teacher/about-us/"><i class="fa fa-cloud icon-setting"></i>关于我们</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main-content">
+    <div style="text-align: center;">
+        <h2>科大教学管理系统</h2>
+    </div>
+    <div class="pull-right">
+        <a href="/logout/"><i class="fa fa-sign-out" style="padding-right: 10px"></i>退出系统</a>
+    </div>
+    <div class="main-show">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="footer">
+        &copy;2015 kylin group. 版权所有 Email Address: kylinhao@kylin.com
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends 'assistant/ast-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        input[type=text] {
+            width: 60px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("div[class^='teacher']").hide();
+{#            $("tr[class^='item']").hide();#}
+        })
+        function show() {
+            var obj = document.getElementById("course-select");
+            var index = obj.selectedIndex;
+            $("div[class^='teacher']").hide();
+
+            if (index != 0) {//没有选择课程
+                var text = obj.options[index].text.substring(0, 3);
+                $(".teacher" + index).show();
+                $("tr[class^='item']").hide();
+                $(".item" + text).show();
+                $(".item").show();
+
+                $(".panel-heading").css('border-bottom', 'none');
+            }
+
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend>学生作业</legend>
+        <select id="course-select" class="form-control" onchange="show()">
+            <option>--&nbsp;请选择课程&nbsp;--</option>
+            {% for tc in tc_list %}
+                <option>
+                    {{ tc.0.courseId }}&nbsp;-&nbsp;{{ tc.0.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+
+        {#        <div class="panel panel-default">#}
+        {#            <div class="panel-heading">#}
+        {#                <h3 class="panel-title">授课教师</h3>#}
+        {#            </div>#}
+        {#            <div class="panel-body">#}
+        {#                {% for tc in tc_list %}#}
+        {#                    <div class="teacher{{ forloop.counter }}">#}
+        {#                        {% for t in tc.1 %}#}
+        {#                            {% if  forloop.counter != 1 %},#}
+        {#                            {% endif %}#}
+        {#                            {{ t.teaId }}&nbsp;-&nbsp;{{ t.name }}#}
+        {#                        {% endfor %}#}
+        {#                    </div>#}
+        {#                {% endfor %}#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="panel-body" style="height: 300px;overflow:auto;">#}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">学生作业</h3>
+            </div>
+            <div style="height: 400px;overflow:auto;">
+                <table class="table table-bordered table-hover">
+                    <tr class="item">
+                        <td>学生</td>
+                        <td>作业</td>
+                        <td>下载</td>
+                        <td>评分</td>
+                        <td>提交</td>
+                    </tr>
+                    {% for sh in sh_list %}
+                        <tr class="item{{ sh.0.courseId }}">
+                            <td>{{ sh.1.stuId }}</td>
+                            <td>{{ sh.1.homeworkId.title }}</td>
+
+                            <td style="width: 300px">
+                                <a href="/upload/{{ sh.1.attachment.name }}">{{ sh.1.attachment.name }}</a>
+                            </td>
+                            <form method="post" class="form" role="form">
+                                <td>
+                                    <input type="hidden" name="h_id" value={{ sh.1.id }}>
+                                    <input name="score" class="form-control input-sm" type="text"
+                                           value={{ sh.1.score }}>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-default  btn-sm">确定</button>
+                                </td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </fieldset>
+{% endblock %}

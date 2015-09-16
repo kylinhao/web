@@ -1,0 +1,54 @@
+{% extends 'teacher/tea-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        td {
+            padding: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("div[class^='teacher']").hide();
+{#            $("div[class^='question']").hide();#}
+        })
+        function show_problem() {
+            var obj = document.getElementById("course-select");
+            var index = obj.selectedIndex;
+            $("div[class^='teacher']").hide();
+
+            if (index != 0) {//没有选择课程
+                $(".teacher" + index).show();
+                $("div[class^='question']").hide();
+                $(".question" + index).show();
+            }
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <fieldset onload="course-select.onchange()">
+        <legend>问题答疑</legend>
+        <select id="course-select" class="form-control" onchange="show_problem()">
+            <option>--&nbsp;请选择课程&nbsp;--</option>
+            {% for c in tc_list %}
+                <option>{{ c.0.courseId }}&nbsp;-&nbsp;{{ c.0.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">学生问题</h3>
+            </div>
+            <div class="panel-body" style="height: 366px;overflow:auto;">
+                {% for qs in q_list %}
+                    {% for q in qs %}
+                        <div class="question{{ forloop.parentloop.counter }}">
+                            <a href="{% url 'tea_question_detail' q.id %} "><h4>{{ q.title }}</h4></a>
+                            <h6>{{ q.stuId.name }}, {{ q.stuId.stuId }}</h6>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </fieldset>
+{% endblock %}

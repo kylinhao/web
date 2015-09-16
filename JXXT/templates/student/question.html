@@ -1,20 +1,73 @@
 {% extends 'student/stu-main.html' %}
 
+{% block styleCSS %}
+    <style>
+        label {
+            font-weight: normal;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("body").height(400)
+            // $("div[class^='teacher']").hide();
+            // $("div[class^='question']").hide();
+            $(".question-state").hide()
+            $(".state").click(function () {
+                var text = $(this).text();
+                if (text.indexOf("提出问题") > -1) {
+                    $(this).html("<i class='fa fa-minus' style='padding-right: 10px'></i>取消问题");
+                }
+                else {
+                    $(this).html("<i class='fa fa-plus' style='padding-right: 10px'></i>提出问题");
+                }
+                $(".question-state").toggle();
+                $("#course-select").toggle();
+                $(".panel").toggle();
+            });
+        })
+        function show_problem() {
+            var obj = document.getElementById("course-select");
+            var index = obj.selectedIndex;
+            //$("div[class^='teacher']").hide();
+
+            if (index != 0) {//没有选择课程
+                //$(".teacher" + index).show();
+                $("div[class^='question']").hide();
+                $(".question" + index).show();
+            }
+        }
+    </script>
+{% endblock %}
 {% block content %}
-    <fieldset>
-        <button class="state btn btn-default" type="button" style="margin-bottom: 20px" >提出问题</button>
-        <div class="question-state">
+    <fieldset onload="course-select.onchange()">
+        <legend>提出问题</legend>
+        <div>
+            <a class="state pull-right" type="button" style="margin-bottom: 20px">
+                <i class="fa fa-plus" style="padding-right: 10px"></i>提出问题
+            </a>
+        </div>
+        <div class="question-state" style=" ">
+        <br>
             <form novalidate="novalidate" method="post" class="form" role="form">
                 <div class="form-group">
-                    <label>课程选择{{ user.name }}</label>
-                    <select class="form-control" name="course_name" >
-                        {% for cs in courses_name %}
-                            <option>{{ cs }}</option>
+                    <label>课程选择</label>
+                    <select name="course_name" class="form-control">
+                        <option>--&nbsp;请选择课程&nbsp;--</option>
+                        {% for c in c_list %}
+                            <option>{{ c.courseId.name }}&nbsp;-&nbsp;{{ c.courseId.courseId }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>问题简述{{ user.name }}</label>
+                    <label>问题简述</label>
                     <input type="text" class="form-control" name="question_name">
                 </div>
                 <div class="form-group">
@@ -24,25 +77,35 @@
                 <div class="form-group">
                     <label></label>
                     <button type="submit" class="btn btn-success" id="submit">提交</button>
+                    {#                    <button type="button" class="cancel btn btn-default" >取消</button>#}
                 </div>
             </form>
         </div>
-        <table class="table table-bordered">
-            <tr>
-                <td></td>
-                <td>课程</td>
-                <td>问题</td>
-            </tr>
-            {% for q in question %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ q.courseId.name }}</td>
-                    <td>{{ q.content }}</td>
-                </tr>
+        <br>
+        <label>课程选择</label>
+        <select id="course-select" name="course_name" class="form-control" onchange="show_problem()">
+            <option>--&nbsp;请选择课程&nbsp;--</option>
+            {% for c in c_list %}
+                <option>{{ c.courseId.name }}&nbsp;-&nbsp;{{ c.courseId.courseId }}</option>
             {% endfor %}
+        </select>
+        <br>
 
-        </table>
-        <legend>提出问题</legend>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">学生问题</h3>
+            </div>
+            <div class="panel-body" style="height: 366px;overflow:auto;">
+                {% for qs in q_list %}
+                    {% for q in qs %}
+                        <div class="question{{ forloop.parentloop.counter }}">
+                            <a href="{% url 'stu_question_detail' q.id %} "><h4>{{ q.title }}</h4></a>
+                            <h6>{{ q.stuId.name }}, {{ q.stuId.stuId }}</h6>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
     </fieldset>
 {% endblock %}

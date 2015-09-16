@@ -1,0 +1,52 @@
+{% extends 'teacher/tea-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        body {
+            font-family: "Microsoft YaHei";
+        }
+
+        label {
+            width: 100px;
+            font-weight: normal;
+            text-align: right;
+        }
+    </style>
+    </head>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend>课程作业</legend>
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td>序号</td>
+                <td>课程</td>
+                <td>作业</td>
+                <td>上传</td>
+                <td>提交</td>
+                <td>删除</td>
+            </tr>
+            {% for h in h_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ h.courseId.name }}</td>
+                    <td>{{ h.title }}</td>
+                    <form method="post" role="form" enctype="multipart/form-data">
+                        {% if h.attachment %}
+                            <td><input type="hidden" name="h-id" value="{{ h.id }}"><a href="/upload/{{ h.attachment }}">{{ h.attachment }}</a></td>
+                            <td><input type="submit" name="operate" class="btn btn-default btn-sm" value="提交"></td>
+                            <td><input type="submit" name="operate" class="btn btn-default btn-sm" value="删除"></td>
+                        {% else %}
+                            <td><input type="hidden" name="h-id" value="{{ h.id }}">{{ form.file.errors }}{{ form.file }}</td>
+                            <td><input type="submit" name="operate" class="btn btn-default btn-sm" value="提交"></td>
+                            <td><input type="submit" name="operate" disabled class="btn btn-default btn-sm" value="删除">
+                            </td>
+                        {% endif %}
+                    </form>
+                </tr>
+            {% endfor %}
+        </table>
+    </fieldset>
+{% endblock %}

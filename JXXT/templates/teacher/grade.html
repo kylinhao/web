@@ -1,0 +1,48 @@
+{% extends 'teacher/tea-main.html' %}
+
+{% block styleCSS %}
+    <style>
+        body {
+            font-family: "Microsoft YaHei";
+        }
+
+        .form-control {
+            width: 100px;
+            display: inline-block;
+        }
+
+        td.grade {
+            width: 110px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <fieldset>
+        <legend>{{ sc.0.0.courseId }}课程成绩</legend>
+        <table name="score-table" class="table table-bordered table-hover">
+            <tr>
+                <td>序号</td>
+                <td>课程编号</td>
+                <td>课程</td>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>成绩</td>
+                <td>操作</td>
+            </tr>
+           {% for s in sc %}
+                <tr>
+                    <form method="post" role="form">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ s.0.courseId }} <input type="hidden" name="course-id" value="{{ s.0.courseId }}"> </td>
+                        <td>{{ s.0.name }}</td>
+                        <td>{{ s.1.stuId.stuId }} <input type="hidden" name="stu-id" value="{{ s.1.stuId.stuId }}"> </td>
+                        <td>{{ s.1.stuId.name }}</td>
+                        <td class="grade"> <input name="score" class="form-control input-sm" type="text" value="{{ s.1.score }}" class="form-control"></td>
+                        <td><button type="submit" class="btn btn-default btn-sm" id="submit">保存</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </table>
+    </fieldset>
+{% endblock %}
